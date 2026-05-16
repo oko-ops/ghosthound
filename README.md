@@ -1,62 +1,53 @@
-# GhostHound
+# 👻 GhostHound
 
-> Lightweight Active Directory attack surface analysis without Neo4j.
+> Lightweight Active Directory attack surface analyzer without Neo4j.
 
-GhostHound is a lightweight Active Directory attack surface analyzer designed to process and correlate BloodHound Python and NetExec (NXC) data to identify high-risk attack paths, privilege escalation opportunities, and AD misconfigurations — without requiring the full BloodHound + Neo4j stack.
-
-Unlike traditional graph-heavy AD analysis platforms, GhostHound focuses on:
-
-- High-value attack path discovery
-- Offensive security visibility
-- Lightweight analysis workflows
-- Human-readable findings
-- Fast CLI-based auditing
-- Future multi-source correlation
+GhostHound transforms BloodHound data into **actionable security findings** in seconds — focusing on what actually matters in Active Directory environments: misconfigurations, privilege escalation paths, and high-risk exposures.
 
 ---
 
-## Features
+## ⚡ What is GhostHound?
 
-- BloodHound ZIP/JSON parsing
-- Lightweight AD analysis engine
-- Kerberoastable account detection
-- AS-REP roastable account detection
-- Privileged group analysis
-- Normalized internal AD models
-- Modular analyzer architecture
-- Clean CLI reporting
-- Multi-source ready architecture
-- Future NetExec (NXC) correlation support
+GhostHound is a fast AD security analysis tool that:
 
----
+- Parses BloodHound Python exports
+- Normalizes Active Directory objects
+- Runs lightweight security analyzers
+- Outputs prioritized findings (not graphs)
 
-## Why GhostHound?
+Instead of visualizing everything, GhostHound answers:
 
-Traditional BloodHound deployments require:
-- Neo4j
-- Large graph datasets
-- Heavy infrastructure
-- Full graph visualization workflows
-
-GhostHound takes a different approach.
-
-Instead of visualizing every edge in the environment, GhostHound focuses on extracting actionable offensive security findings from collected AD data.
-
-The goal is to prioritize:
-- What is exploitable
-- What is dangerous
-- What leads to privilege escalation
-- What should be investigated first
+> “What is actually exploitable in this domain?”
 
 ---
 
-## Demo
+## 🚨 Problem
 
-### Loading BloodHound Data
+Traditional AD analysis tools like BloodHound:
 
-```bash
-ghosthound analyze input/
-```
+- Require Neo4j database setup
+- Produce complex graph structures
+- Require manual analysis of attack paths
+- Are heavy for quick assessments
+
+This slows down real-world red team workflows.
+
+---
+
+## 💡 Solution
+
+GhostHound focuses on **actionable intelligence**, not visualization.
+
+It extracts:
+
+- 🔥 Exploitable misconfigurations
+- 🔑 Credential attack opportunities
+- 🧭 Privilege escalation paths
+- ⚠️ High-risk AD exposures
+
+---
+
+## ⚡ Example Output
 
 ```text
 ============================================================
@@ -71,201 +62,139 @@ Total Groups:    550
 ============================================================
 ```
 
----
-
-### Example Findings
-
 ```text
 ============================================================
 Security Findings
 ============================================================
 
 [CRITICAL] 3 Domain Admin Members
+  ADMINISTRATOR@OFFSEC.NL
+  CLARENCE_WILSON@OFFSEC.NL
+  DON_ROBERTS@OFFSEC.NL
 
 [HIGH] 165 AS-REP Roastable Users Found
 
 [HIGH] 50 Kerberoastable Users Found
+============================================================
 ```
 
 ---
 
-## Architecture
+## 🧠 Key Features
 
-GhostHound is designed around a normalized internal data model.
+- BloodHound ZIP/JSON parsing
+- Normalized AD data model
+- Kerberoast detection
+- AS-REP roast detection
+- Domain Admin analysis
+- Lightweight CLI output
+- Modular analyzer system
 
-All external data sources are converted into clean internal objects before analysis.
+---
+
+## 🏗 Architecture
 
 ```text
-BloodHound / NXC / LDAP
-            ↓
-         Parsers
-            ↓
-    Normalized Models
-            ↓
-         Analyzers
-            ↓
-         Findings
-            ↓
-      Correlation Engine
-            ↓
-       Attack Paths
-            ↓
-         Reporting
-```
-
-This architecture allows GhostHound to:
-- remain data-source agnostic
-- support future integrations easily
-- separate parsing from analysis logic
-- avoid tightly coupled detection code
-
----
-
-## Project Structure
-
-```text
-ghosthound/
-│
-├── ghosthound/
-│   ├── analyzers/
-│   ├── collectors/
-│   ├── correlation/
-│   ├── models/
-│   ├── parsers/
-│   ├── reports/
-│   ├── scoring/
-│   └── utils/
-│
-├── tests/
-├── screenshots/
-├── input/
-├── main.py
-├── pyproject.toml
-└── README.md
+BloodHound Data
+        ↓
+     Parsers
+        ↓
+Normalized Models
+        ↓
+    Analyzers
+        ↓
+     Findings
+        ↓
+     CLI Output
 ```
 
 ---
 
-## Installation
+## 🎯 Use Cases
+
+- Internal penetration testing
+- Active Directory security audits
+- Red team reconnaissance
+- Attack surface reduction
+- Pre-engagement analysis
+
+---
+
+## ⚠️ What GhostHound is NOT
+
+GhostHound is NOT:
+
+- ❌ A BloodHound replacement
+- ❌ A graph visualization tool
+- ❌ A full attack simulation framework
+
+It is a **focused analysis engine for actionable findings**.
+
+---
+
+## 🚀 Roadmap
+
+### v0.1 (Current)
+- BloodHound parser
+- Basic analyzers
+- CLI reporting
+
+### v0.2
+- NetExec integration
+- Correlation engine
+- Attack path linking
+
+### v0.3
+- Risk scoring system
+- Session analysis
+- Lateral movement mapping
+
+---
+
+## 📦 Installation
 
 ```bash
-git clone https://github.com/YOURNAME/ghosthound
+git clone https://github.com/oko-ops/ghosthound
 cd ghosthound
-
 pip install -e .
 ```
 
 ---
 
-## Usage
-
-### Analyze BloodHound ZIP Export
-
-```bash
-ghosthound analyze input/bloodhound.zip
-```
-
-### Analyze JSON Directory
+## 🧪 Usage
 
 ```bash
 ghosthound analyze input/
 ```
 
----
+or
 
-## Supported Findings
-
-Current detection modules include:
-
-- Kerberoastable users
-- AS-REP roastable accounts
-- Domain Admin members
-- Privileged group analysis
-
-Planned detections:
-
-- Unconstrained delegation
-- Constrained delegation
-- Local admin relationships
-- Session analysis
-- ADCS abuse paths
-- Shadow credentials
-- SMB exposure correlation
+```bash
+ghosthound analyze input/bloodhound.zip
+```
 
 ---
 
-## Design Principles
+## 🤝 Contributing
 
-GhostHound is built with the following goals:
+Contributions are welcome in:
 
-### Lightweight
-No Neo4j or graph database required.
-
-### Offensive Security Focused
-Built for red team operators, internal pentesters, and AD auditors.
-
-### Modular
-Easy to extend with new parsers, analyzers, and correlation engines.
-
-### Clean Architecture
-Parsing, analysis, scoring, and reporting are fully separated.
-
-### Multi-Source Ready
-Designed to support:
-- BloodHound Python
-- NetExec (NXC)
-- LDAP enumeration
-- SMB enumeration
-- Kerberos enumeration
+- New analyzers
+- Correlation logic
+- Data parsers
+- Reporting improvements
 
 ---
 
-## Roadmap
+## 🧠 Design Philosophy
 
-### Phase 1
-- BloodHound parser
-- Normalized models
-- Initial analyzers
-
-### Phase 2
-- Correlation engine
-- Attack chain generation
-- Risk scoring
-
-### Phase 3
-- NetExec integration
-- SMB exposure analysis
-- Attack validation
-
-### Phase 4
-- HTML reporting
-- Interactive TUI
-- Continuous AD exposure monitoring
+- Lightweight over complex
+- Actionable over visual
+- Fast over feature-heavy
+- Modular over monolithic
 
 ---
 
-## Future Vision
+## 📄 License
 
-GhostHound is evolving toward a lightweight AD intelligence engine capable of correlating offensive security data from multiple sources to automatically identify realistic attack opportunities and privilege escalation paths.
-
----
-
-## Contributing
-
-Contributions, ideas, pull requests, and feedback are welcome.
-
-Future contributors may help with:
-- new analyzers
-- correlation rules
-- reporting modules
-- parsers
-- attack path logic
-- ADCS support
-
----
-
-## License
-
-GPLv3 License
-
-Copyright (c) 2026 oko-ops
+GPLv3 © 2026 oko-ops
