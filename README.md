@@ -1,7 +1,9 @@
 # 👻 GhostHound
 
 > Lightweight Active Directory attack surface analyzer without Neo4j.
-
+<p align="center">
+  <img src="banner.png" alt="GhostHound Banner" />
+</p>
 GhostHound transforms BloodHound data into **actionable security findings** in seconds — focusing on what actually matters in Active Directory environments: misconfigurations, privilege escalation paths, and high-risk exposures.
 
 ---
