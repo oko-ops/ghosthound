@@ -1,6 +1,7 @@
 ![Python](https://img.shields.io/badge/python-3.10+-blue)
 ![License](https://img.shields.io/badge/license-GPLv3-red)
 ![Status](https://img.shields.io/badge/status-active-green)
+
 # 👻 GhostHound
 
 > Lightweight Active Directory attack surface analyzer without Neo4j.
@@ -17,36 +18,48 @@
 
 ## ⚡ TL;DR
 
-GhostHound transforms BloodHound data into **actionable security findings** in seconds — focusing on real attack surfaces, not graphs.
+GhostHound turns BloodHound data into **prioritized security findings** in seconds — focusing on what is exploitable, not what is visualized.
 
 > BloodHound shows relationships.  
-> GhostHound shows risk.
+> GhostHound shows attack surface.
 
 ---
 
-## 🚨 Problem
+## ⚡ Why This Exists
 
-Traditional Active Directory analysis tools:
+Traditional AD analysis tools are powerful but:
 
-- Require Neo4j setup
-- Produce complex graph visualizations
-- Require manual attack path analysis
-- Are slow for quick security assessments
+- Require Neo4j and heavy setup
+- Produce large, complex graph datasets
+- Force manual interpretation of attack paths
+- Slow down real-world red team workflows
 
-👉 Result: too much data, not enough action.
+👉 Result: **too much data, not enough decisions**
 
 ---
 
-## 💡 Solution
+## 💡 What GhostHound Does Instead
 
-GhostHound extracts only what matters:
+GhostHound removes graph complexity and focuses only on **security impact**:
 
 - 🔥 Exploitable misconfigurations
-- 🔑 Credential attack vectors
+- 🔑 Credential attack opportunities
 - 🧭 Privilege escalation paths
-- ⚠️ High-risk AD exposures
+- ⚠️ High-risk Active Directory exposures
 
-All in a **fast CLI workflow**.
+All delivered in a fast CLI workflow.
+
+---
+
+## ⚖️ GhostHound vs BloodHound
+
+| Feature | BloodHound | GhostHound |
+|--------|-------------|-------------|
+| Core Output | Relationship Graphs | Security Findings |
+| Setup | Neo4j required | No database required |
+| Focus | Visualization | Exploitation insight |
+| Workflow | Manual analysis | Automated prioritization |
+| Speed | Heavy | Lightweight & fast |
 
 ---
 
@@ -77,17 +90,6 @@ All in a **fast CLI workflow**.
 
 ---
 
-## 🧠 Why GhostHound?
-
-GhostHound is built for speed and clarity:
-
-- ⚡ Fast analysis
-- 🎯 Actionable output
-- 🧩 Modular architecture
-- 🪶 Lightweight (no Neo4j)
-
----
-
 ## 🏗 Architecture
 
 ```text
@@ -108,21 +110,23 @@ Normalized Models
 
 ## 🎯 Use Cases
 
+- Active Directory security assessments
 - Red team reconnaissance
-- Active Directory security audits
-- Internal pentesting
+- Internal penetration testing
 - Attack surface review
 - Pre-engagement analysis
 
 ---
 
-## ⚠️ Not a Replacement For
+## ⚠️ Scope
 
 GhostHound is NOT:
 
-- ❌ BloodHound replacement
-- ❌ Graph visualization tool
-- ❌ Full attack simulation framework
+- ❌ A BloodHound replacement
+- ❌ A graph visualization tool
+- ❌ A full attack simulation framework
+
+It is a **focused analysis engine for actionable AD security findings**.
 
 ---
 
@@ -130,7 +134,7 @@ GhostHound is NOT:
 
 ### v0.1 (Current)
 - BloodHound parser
-- Basic analyzers
+- Core analyzers
 - CLI reporting
 
 ### v0.2
@@ -140,8 +144,8 @@ GhostHound is NOT:
 
 ### v0.3
 - Risk scoring system
-- Session analysis
-- Lateral movement mapping
+- Session correlation
+- Lateral movement analysis
 
 ---
 
@@ -171,11 +175,11 @@ ghosthound analyze input/bloodhound.zip
 
 ## 🤝 Contributing
 
-PRs welcome:
+Pull requests are welcome:
 
 - New analyzers
-- Correlation logic
 - Data parsers
+- Correlation logic
 - Reporting improvements
 
 ---
