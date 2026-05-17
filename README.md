@@ -1,83 +1,63 @@
 # 👻 GhostHound
 
 > Lightweight Active Directory attack surface analyzer without Neo4j.
+
 <p align="center">
   <img src="banner.png" alt="GhostHound Banner" />
 </p>
-GhostHound transforms BloodHound data into **actionable security findings** in seconds — focusing on what actually matters in Active Directory environments: misconfigurations, privilege escalation paths, and high-risk exposures.
+
+<p align="center">
+  <img src="demo.gif" alt="GhostHound Demo" />
+</p>
 
 ---
 
-## ⚡ What is GhostHound?
+## ⚡ TL;DR
 
-GhostHound is a fast AD security analysis tool that:
+GhostHound transforms BloodHound data into **actionable security findings** in seconds — focusing on real attack surfaces, not graphs.
 
-- Parses BloodHound Python exports
-- Normalizes Active Directory objects
-- Runs lightweight security analyzers
-- Outputs prioritized findings (not graphs)
-
-Instead of visualizing everything, GhostHound answers:
-
-> “What is actually exploitable in this domain?”
+> BloodHound shows relationships.  
+> GhostHound shows risk.
 
 ---
 
 ## 🚨 Problem
 
-Traditional AD analysis tools like BloodHound:
+Traditional Active Directory analysis tools:
 
-- Require Neo4j database setup
-- Produce complex graph structures
-- Require manual analysis of attack paths
-- Are heavy for quick assessments
+- Require Neo4j setup
+- Produce complex graph visualizations
+- Require manual attack path analysis
+- Are slow for quick security assessments
 
-This slows down real-world red team workflows.
+👉 Result: too much data, not enough action.
 
 ---
 
 ## 💡 Solution
 
-GhostHound focuses on **actionable intelligence**, not visualization.
-
-It extracts:
+GhostHound extracts only what matters:
 
 - 🔥 Exploitable misconfigurations
-- 🔑 Credential attack opportunities
+- 🔑 Credential attack vectors
 - 🧭 Privilege escalation paths
 - ⚠️ High-risk AD exposures
+
+All in a **fast CLI workflow**.
 
 ---
 
 ## ⚡ Example Output
 
 ```text
-============================================================
-BloodHound Data Loaded Successfully
-============================================================
-Domains:  1
-  - OFFSEC.NL
-
-Total Users:     2493
-Total Computers: 103
-Total Groups:    550
-============================================================
-```
-
-```text
-============================================================
-Security Findings
-============================================================
-
 [CRITICAL] 3 Domain Admin Members
-  ADMINISTRATOR@OFFSEC.NL
-  CLARENCE_WILSON@OFFSEC.NL
-  DON_ROBERTS@OFFSEC.NL
+- ADMINISTRATOR@OFFSEC.NL
+- CLARENCE_WILSON@OFFSEC.NL
+- DON_ROBERTS@OFFSEC.NL
 
-[HIGH] 165 AS-REP Roastable Users Found
+[HIGH] 165 AS-REP Roastable Users
 
-[HIGH] 50 Kerberoastable Users Found
-============================================================
+[HIGH] 50 Kerberoastable Users
 ```
 
 ---
@@ -85,12 +65,23 @@ Security Findings
 ## 🧠 Key Features
 
 - BloodHound ZIP/JSON parsing
-- Normalized AD data model
+- Normalized AD object model
 - Kerberoast detection
 - AS-REP roast detection
 - Domain Admin analysis
 - Lightweight CLI output
 - Modular analyzer system
+
+---
+
+## 🧠 Why GhostHound?
+
+GhostHound is built for speed and clarity:
+
+- ⚡ Fast analysis
+- 🎯 Actionable output
+- 🧩 Modular architecture
+- 🪶 Lightweight (no Neo4j)
 
 ---
 
@@ -114,23 +105,21 @@ Normalized Models
 
 ## 🎯 Use Cases
 
-- Internal penetration testing
-- Active Directory security audits
 - Red team reconnaissance
-- Attack surface reduction
+- Active Directory security audits
+- Internal pentesting
+- Attack surface review
 - Pre-engagement analysis
 
 ---
 
-## ⚠️ What GhostHound is NOT
+## ⚠️ Not a Replacement For
 
 GhostHound is NOT:
 
-- ❌ A BloodHound replacement
-- ❌ A graph visualization tool
-- ❌ A full attack simulation framework
-
-It is a **focused analysis engine for actionable findings**.
+- ❌ BloodHound replacement
+- ❌ Graph visualization tool
+- ❌ Full attack simulation framework
 
 ---
 
@@ -179,21 +168,12 @@ ghosthound analyze input/bloodhound.zip
 
 ## 🤝 Contributing
 
-Contributions are welcome in:
+PRs welcome:
 
 - New analyzers
 - Correlation logic
 - Data parsers
 - Reporting improvements
-
----
-
-## 🧠 Design Philosophy
-
-- Lightweight over complex
-- Actionable over visual
-- Fast over feature-heavy
-- Modular over monolithic
 
 ---
 
