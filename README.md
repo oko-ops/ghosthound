@@ -1,3 +1,6 @@
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![License](https://img.shields.io/badge/license-GPLv3-red)
+![Status](https://img.shields.io/badge/status-active-green)
 # 👻 GhostHound
 
 > Lightweight Active Directory attack surface analyzer without Neo4j.
